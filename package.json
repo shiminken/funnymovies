@@ -1,0 +1,15 @@
+{
+  "name": "funnymovies",
+  "version": "1.0.0",
+  "description": " A place to save my favorite movies and share with my friend ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ken",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
