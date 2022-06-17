@@ -13,6 +13,6 @@ const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
 export const NormalText = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-NormalText.args = {
-  label: "This is Text",
-};
+// NormalText.args = {
+//   label: "This is Text",
+// };
