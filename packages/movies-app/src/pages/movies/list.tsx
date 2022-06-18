@@ -18,14 +18,15 @@ const MovieList = () => {
         setMoviesData(data.reverse());
       }
     } catch (error) {
+      console.log("GET YOUT TUBE URL ERROR", error);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    getAllYoutubeUrl();
-  }, []);
+    void getAllYoutubeUrl();
+  }, [getAllYoutubeUrl]);
 
   const renderMoviesList = useCallback(() => {
     if (moviesData.length) {

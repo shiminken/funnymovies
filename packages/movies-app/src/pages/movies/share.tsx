@@ -1,6 +1,5 @@
 import MainTemplate from "@/components/MainTemplate";
 import {
-  Box,
   CircularProgress,
   Dialog,
   DialogActions,
@@ -43,6 +42,14 @@ const MovieToShare = () => {
     },
   });
 
+  const handleClickOpen = useCallback(() => {
+    setOpenDialog(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setOpenDialog(false);
+  }, []);
+
   const onSubmit = React.useCallback(
     async (data: YoutubeLinkValue) => {
       try {
@@ -57,7 +64,7 @@ const MovieToShare = () => {
         setLoading(false);
       }
     },
-    [isLoading]
+    [handleClickOpen, userDetails?.email]
   );
 
   const _validationHandler = useCallback(
@@ -74,14 +81,6 @@ const MovieToShare = () => {
     },
     [validate, setValidate]
   );
-
-  const handleClickOpen = useCallback(() => {
-    setOpenDialog(true);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setOpenDialog(false);
-  }, []);
 
   const renderDialog = useCallback(() => {
     return (
@@ -107,7 +106,7 @@ const MovieToShare = () => {
         </DialogActions>
       </Dialog>
     );
-  }, [isOpenDialog]);
+  }, [isOpenDialog, handleClose, replace]);
 
   return (
     <MainTemplate isHideRightSide isBack leftTitle="Share a Youtube movie">
