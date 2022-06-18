@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FormInputGroup, Button } from "ui-library";
 import { useForm } from "react-hook-form";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import styled from "@emotion/styled";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import { authSchema } from "@/services/authentications/schema";
 import { AuthValues } from "@/services/authentications/auth.type";
+import { supabase } from "@/utils/supabaseClient";
 
 const Wrapper = styled(Box)`
   display: grid;
@@ -20,7 +21,8 @@ const ButtonStyled = styled(Button)`
 
 const SignInForm = () => {
   const [validate, setValidate] = useState<any>({});
-  const { push } = useRouter();
+  const [isLoading, setLoading] = useState(false);
+  const { push, reload } = useRouter();
 
   const {
     handleSubmit,
@@ -43,7 +45,23 @@ const SignInForm = () => {
   );
 
   const onSubmit = React.useCallback(async (data: AuthValues) => {
-    console.log("DATA", data);
+    try {
+      setLoading(true);
+      const response = await supabase.auth.signIn({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (response?.error?.message) {
+        alert(response?.error?.message);
+      } else {
+        reload();
+      }
+    } catch (error) {
+      console.log("Error occur", error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
   const _validationHandler = React.useCallback(
     (e: any) => {
@@ -76,11 +94,16 @@ const SignInForm = () => {
         id="password"
         placeholder="password"
       />
-      <ButtonStyled
-        label={"Login"}
-        type="submit"
-        onClick={handleSubmit(onSubmit, _validationHandler)}
-      />
+      {isLoading ? (
+        <CircularProgress size={30} />
+      ) : (
+        <ButtonStyled
+          label={"Login"}
+          type="submit"
+          onClick={handleSubmit(onSubmit, _validationHandler)}
+        />
+      )}
+
       <ButtonStyled
         label={"Register"}
         type="submit"

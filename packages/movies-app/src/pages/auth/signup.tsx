@@ -1,13 +1,17 @@
 import MainTemplate from "@/components/MainTemplate";
 import styled from "@emotion/styled";
 import { Box, CircularProgress } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormInputGroup, Button } from "ui-library";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
 import { AuthValues } from "@/services/authentications/auth.type";
 import { authSchema } from "@/services/authentications/schema";
+import { supabase } from "@/utils/supabaseClient";
+import { User } from "@supabase/gotrue-js";
+import { getURL } from "@/utils/helpers";
+import { useUser } from "@/hooks/useUser";
 
 const SignUpWrapper = styled(Box)`
   display: flex;
@@ -22,6 +26,9 @@ const styles = {
     width: "300px",
     marginTop: "15px",
   },
+  loadingIndicator: {
+    marginTop: "10px",
+  },
 };
 
 const ButtonStyled = styled(Button)`
@@ -30,7 +37,11 @@ const ButtonStyled = styled(Button)`
 
 const SignUp = () => {
   const [validate, setValidate] = useState<any>({});
-  const { push } = useRouter();
+  const [isLoading, setLoading] = useState(false);
+  const [newUser, setNewUser] = useState<User | null>(null);
+  const { userDetails } = useUser();
+
+  const { replace } = useRouter();
   const {
     handleSubmit,
     control,
@@ -52,7 +63,23 @@ const SignUp = () => {
   );
 
   const onSubmit = React.useCallback(async (data: AuthValues) => {
-    console.log("DATA", data);
+    try {
+      setLoading(true);
+      const { error, user: createdUser } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) {
+        alert(error?.message);
+      } else {
+        setNewUser(createdUser);
+      }
+    } catch (error) {
+      console.log("Error occur", error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const _validationHandler = React.useCallback(
@@ -61,6 +88,12 @@ const SignUp = () => {
     },
     [setValidate]
   );
+
+  useEffect(() => {
+    if (newUser || userDetails) {
+      replace(getURL());
+    }
+  }, [newUser, userDetails]);
 
   return (
     <MainTemplate isHideRightSide leftTitle="Sign Up">
@@ -90,12 +123,15 @@ const SignUp = () => {
           style={styles.formInput}
         />
 
-        {/* <CircularProgress size={30} style={{ marginTop: "10px" }} /> */}
+        {isLoading && (
+          <CircularProgress size={30} style={styles.loadingIndicator} />
+        )}
 
         <ButtonStyled
           label={"Become our member"}
           type="submit"
           onClick={handleSubmit(onSubmit, _validationHandler)}
+          disabled={isLoading}
         />
       </SignUpWrapper>
     </MainTemplate>

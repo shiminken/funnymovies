@@ -3,6 +3,8 @@ import { Footer, Header, Text } from "ui-library";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import { SignInForm } from "./organisms";
+import { useUser } from "@/hooks/useUser";
+import { LoginSectionHeader } from "./molecules";
 
 interface MainTemplateProps {
   children: JSX.Element;
@@ -31,22 +33,31 @@ const MainTemplate = ({
   isHideRightSide,
   leftTitle = "Funny movies",
 }: MainTemplateProps) => {
+  const { userDetails, isLoading } = useUser();
+
   const _renderLeftHeader = useCallback(() => {
     return <AppName>{leftTitle}</AppName>;
   }, []);
-
   const _renderRightHeader = useCallback(() => {
-    return <SignInForm />;
-  }, []);
+    if (userDetails) {
+      return <LoginSectionHeader />;
+    } else {
+      return <SignInForm />;
+    }
+  }, [userDetails]);
 
   return (
     <Wrapper>
-      <Header
-        leftHeader={_renderLeftHeader()}
-        rightHeader={!isHideRightSide && _renderRightHeader()}
-      />
-      {children}
-      <Footer />
+      {!isLoading && (
+        <>
+          <Header
+            leftHeader={_renderLeftHeader()}
+            rightHeader={!isHideRightSide && _renderRightHeader()}
+          />
+          {children}
+          <Footer />
+        </>
+      )}
     </Wrapper>
   );
 };
