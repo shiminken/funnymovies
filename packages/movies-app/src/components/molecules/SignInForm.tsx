@@ -95,7 +95,7 @@ const SignInForm = () => {
         placeholder="password"
       />
       {isLoading ? (
-        <CircularProgress size={30} />
+        <CircularProgress size={20} />
       ) : (
         <ButtonStyled
           label={"Login"}
