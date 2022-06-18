@@ -10,7 +10,6 @@ import { AuthValues } from "@/services/authentications/auth.type";
 import { authSchema } from "@/services/authentications/schema";
 import { supabase } from "@/utils/supabaseClient";
 import { User } from "@supabase/gotrue-js";
-import { getURL } from "@/utils/helpers";
 import { useUser } from "@/hooks/useUser";
 
 const SignUpWrapper = styled(Box)`
@@ -90,7 +89,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (newUser || userDetails) {
-      void replace(getURL());
+      void replace("/");
     }
   }, [newUser, userDetails, replace]);
 
