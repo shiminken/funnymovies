@@ -35,6 +35,7 @@
     "eslint-plugin-mui-unused-classes": "^1.0.3",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.7.1",
     "typescript": "4.7.3"
   }
 }
