@@ -16,7 +16,6 @@ import { useUser } from "@/hooks/useUser";
 const SignUpWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
 `;
@@ -96,7 +95,7 @@ const SignUp = () => {
   }, [newUser, userDetails]);
 
   return (
-    <MainTemplate isHideRightSide leftTitle="Sign Up">
+    <MainTemplate isHideRightSide leftTitle="Sign Up" isBack>
       <SignUpWrapper>
         <FormInputGroup
           control={control}
@@ -124,7 +123,7 @@ const SignUp = () => {
         />
 
         {isLoading && (
-          <CircularProgress size={30} style={styles.loadingIndicator} />
+          <CircularProgress size={20} style={styles.loadingIndicator} />
         )}
 
         <ButtonStyled

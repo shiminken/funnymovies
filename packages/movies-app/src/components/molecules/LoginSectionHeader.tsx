@@ -17,7 +17,7 @@ const Wrapper = styled(Box)`
 const LoginSectionHeader = () => {
   const { userDetails } = useUser();
   const [isLoading, setLoading] = useState(false);
-  const { replace, reload } = useRouter();
+  const { reload, push } = useRouter();
 
   const handleSignOut = useCallback(async () => {
     try {
@@ -36,12 +36,16 @@ const LoginSectionHeader = () => {
       {userDetails && (
         <>
           <Text>Welcome: {userDetails?.email}</Text>
-          <Button label={"Share a movie"} type="submit" />
+          <Button
+            label={"Share a movie"}
+            type="submit"
+            onClick={() => push("/movies/share")}
+          />
           <Button label={"logout"} type="submit" onClick={handleSignOut} />
         </>
       )}
 
-      {isLoading && <CircularProgress size={30} />}
+      {isLoading && <CircularProgress size={20} />}
     </Wrapper>
   );
 };
