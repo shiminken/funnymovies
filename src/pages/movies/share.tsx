@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { youtubeSchema } from "@/services/movieshare/schema";
 import { useRouter } from "next/router";
-import { getURL, getYoutubeId } from "@/utils/helpers";
+import { getYoutubeId } from "@/utils/helpers";
 import { updateMovieInfors } from "@/services/movieshare";
 import { useUser } from "@/hooks/useUser";
 import {
@@ -100,7 +100,7 @@ const MovieToShare = () => {
           <Button
             label={"Go Home"}
             type="submit"
-            onClick={() => replace(getURL())}
+            onClick={() => replace("/")}
           />
           <Button label={"Continue"} type="submit" onClick={handleClose} />
         </DialogActions>
