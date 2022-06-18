@@ -89,7 +89,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (newUser || userDetails) {
-      void replace('/');
+      void replace("/");
     }
   }, [newUser, userDetails, replace]);
 
