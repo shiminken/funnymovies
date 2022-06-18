@@ -1,15 +1,15 @@
 import React, { useCallback, CSSProperties } from "react";
 import styled from "@emotion/styled";
 import colors from "../../../constants/colors";
+import TextInput from "../../atoms/TextInput";
 
 const HeaderWrapper = styled.div`
-  background-color: ${colors.darkGreen};
-  color: ${colors.white};
+  background-color: ${colors.grey};
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 5vh;
+  height: 7vh;
   align-items: center;
   padding: 0 10px;
 `;

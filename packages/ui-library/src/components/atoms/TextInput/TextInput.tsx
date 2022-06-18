@@ -23,6 +23,10 @@ const DefaultTextInput = styled(Input)`
   padding: 0 5px;
 `;
 
+const FormHelperTextStyled = styled(FormHelperText)`
+  margin-left: 0;
+`;
+
 const TextInput: React.FC<TextInputProps> = ({
   errMessage,
   label,
@@ -34,7 +38,9 @@ const TextInput: React.FC<TextInputProps> = ({
   required,
   ...registerProps
 }) => {
-  const renderErrMessage = <FormHelperText>{errMessage}</FormHelperText>;
+  const renderErrMessage = (
+    <FormHelperTextStyled>{errMessage}</FormHelperTextStyled>
+  );
 
   return (
     <FormControl className={wrapperClassName} required={required}>
