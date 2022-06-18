@@ -4,7 +4,12 @@
   "description": " A place to save my favorite movies and share with my friend ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "movies": "yarn workspace movies-app",
+    "components": "yarn workspace ui-library",
+    "build:pre": "yarn components build",
+    "build:next": "yarn movies build",
+    "build": "yarn build:pre && yarn build:next"
   },
   "author": "Ken",
   "license": "ISC",

@@ -4,7 +4,7 @@ import { CircularProgress } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 
 import { MovieCard } from "ui-library";
-import { MovieListWrapper, styles } from "./movies.styled";
+import { MovieListWrapper, styles } from "../../../styles/movies.styled";
 
 const MovieList = () => {
   const [moviesData, setMoviesData] = useState<MovieInformation[]>([]);

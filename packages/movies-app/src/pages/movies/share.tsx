@@ -21,7 +21,7 @@ import {
   ShareWrapper,
   UrlWrapper,
   styles,
-} from "./movies.styled";
+} from "../../../styles/movies.styled";
 
 export type YoutubeLinkValue = {
   youtubeUrl: string;

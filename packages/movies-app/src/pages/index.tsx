@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import MainTemplate from "../components/MainTemplate";
 import styles from "../../styles/Home.module.css";
-import { MovieList } from "./movies";
+import MovieList from "./movies/list";
 
 const Home: NextPage = () => {
   return (
