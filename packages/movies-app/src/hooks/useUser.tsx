@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useContext } from "react";
-import { User, Session } from "@supabase/supabase-auth-helpers/react";
+import { User } from "@supabase/supabase-auth-helpers/react";
 import { supabase } from "@/utils/supabaseClient";
 import { SupabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 

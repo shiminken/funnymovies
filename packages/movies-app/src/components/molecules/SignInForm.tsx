@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FormInputGroup, Button } from "ui-library";
 import { useForm } from "react-hook-form";
 import { Box, CircularProgress } from "@mui/material";
 import styled from "@emotion/styled";
@@ -8,6 +7,7 @@ import { useRouter } from "next/router";
 import { authSchema } from "@/services/authentications/schema";
 import { AuthValues } from "@/services/authentications/auth.type";
 import { supabase } from "@/utils/supabaseClient";
+import { FormInputGroup, Button } from "ui-library";
 
 const Wrapper = styled(Box)`
   display: grid;
@@ -44,25 +44,28 @@ const SignInForm = () => {
     [validate, setValidate]
   );
 
-  const onSubmit = React.useCallback(async (data: AuthValues) => {
-    try {
-      setLoading(true);
-      const response = await supabase.auth.signIn({
-        email: data.email,
-        password: data.password,
-      });
+  const onSubmit = React.useCallback(
+    async (data: AuthValues) => {
+      try {
+        setLoading(true);
+        const response = await supabase.auth.signIn({
+          email: data.email,
+          password: data.password,
+        });
 
-      if (response?.error?.message) {
-        alert(response?.error?.message);
-      } else {
-        reload();
+        if (response?.error?.message) {
+          alert(response?.error?.message);
+        } else {
+          reload();
+        }
+      } catch (error) {
+        console.log("Error occur", error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.log("Error occur", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    },
+    [reload]
+  );
   const _validationHandler = React.useCallback(
     (e: any) => {
       setValidate(e);

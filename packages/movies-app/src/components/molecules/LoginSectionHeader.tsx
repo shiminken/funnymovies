@@ -1,5 +1,4 @@
 import { useUser } from "@/hooks/useUser";
-import { getURL } from "@/utils/helpers";
 import { supabase } from "@/utils/supabaseClient";
 import styled from "@emotion/styled";
 import { Box, CircularProgress } from "@mui/material";
@@ -29,7 +28,7 @@ const LoginSectionHeader = () => {
       setLoading(false);
       reload();
     }
-  }, []);
+  }, [reload]);
 
   return (
     <Wrapper>

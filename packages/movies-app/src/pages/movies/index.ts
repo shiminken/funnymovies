@@ -1,2 +1,2 @@
-export {default as MovieList } from './list'
-export {default as MovieToShare } from './share'
+export { default as MovieList } from "./list";
+export { default as MovieToShare } from "./share";

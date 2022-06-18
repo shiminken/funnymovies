@@ -90,9 +90,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (newUser || userDetails) {
-      replace(getURL());
+      void replace(getURL());
     }
-  }, [newUser, userDetails]);
+  }, [newUser, userDetails, replace]);
 
   return (
     <MainTemplate isHideRightSide leftTitle="Sign Up" isBack>

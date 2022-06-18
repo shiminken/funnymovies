@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Footer, Header, Text } from "ui-library";
+import { Footer, Header } from "ui-library";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import { useUser } from "@/hooks/useUser";
@@ -46,6 +46,10 @@ const MainTemplate = ({
   const { userDetails, isLoading } = useUser();
   const { back } = useRouter();
 
+  const renderBackBtn = useCallback(
+    () => <Button label={"Back"} type="submit" onClick={() => back()} />,
+    [back]
+  );
   const _renderLeftHeader = useCallback(() => {
     return (
       <LeftWrapper>
@@ -53,7 +57,7 @@ const MainTemplate = ({
         <AppName>{leftTitle}</AppName>
       </LeftWrapper>
     );
-  }, [isBack]);
+  }, [isBack, leftTitle, renderBackBtn]);
 
   const _renderRightHeader = useCallback(() => {
     if (userDetails) {
@@ -62,11 +66,6 @@ const MainTemplate = ({
       return <SignInForm />;
     }
   }, [userDetails]);
-
-  const renderBackBtn = useCallback(
-    () => <Button label={"Back"} type="submit" onClick={() => back()} />,
-    []
-  );
 
   return (
     <Wrapper>

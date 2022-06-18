@@ -30,23 +30,6 @@
     "@typescript-eslint/await-thenable": "warn",
     "@typescript-eslint/require-await": "warn",
     "mui-unused-classes/unused-classes": "warn",
-    "react/display-name": "off",
-    "import/order": [
-      "warn",
-      {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "alphabetize": {
-          "order": "asc"
-        }
-      }
-    ]
+    "react/display-name": "off"
   }
 }
