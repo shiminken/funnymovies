@@ -1,4 +1,3 @@
-import MainTemplate from "@/components/MainTemplate";
 import styled from "@emotion/styled";
 import { Box, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -6,11 +5,12 @@ import { FormInputGroup, Button } from "movies-ui-components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
-import { AuthValues } from "@/services/authentications/auth.type";
-import { authSchema } from "@/services/authentications/schema";
-import { supabase } from "@/utils/supabaseClient";
 import { User } from "@supabase/gotrue-js";
-import { useUser } from "@/hooks/useUser";
+import MainTemplate from "../../components/MainTemplate";
+import { useUser } from "../../hooks/useUser";
+import { AuthValues } from "../../services/authentications/auth.type";
+import { authSchema } from "../../services/authentications/schema";
+import { supabase } from "../../utils/supabaseClient";
 
 const SignUpWrapper = styled(Box)`
   display: flex;

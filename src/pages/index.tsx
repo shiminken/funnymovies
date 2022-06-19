@@ -12,6 +12,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Have fun with your friend" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <MainTemplate>
         <MovieList />
       </MainTemplate>

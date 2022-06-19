@@ -15,10 +15,6 @@
     "jsx": "preserve",
     "removeComments": true,
     "importHelpers": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,10 +1,10 @@
-import { useUser } from "@/hooks/useUser";
-import { supabase } from "@/utils/supabaseClient";
 import styled from "@emotion/styled";
 import { Box, CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import React, { useCallback, useState } from "react";
 import { Text, Button } from "movies-ui-components";
+import { supabase } from "../../utils/supabaseClient";
+import { useUser } from "../../hooks/useUser";
 
 const Wrapper = styled(Box)`
   display: grid;

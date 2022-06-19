@@ -4,10 +4,10 @@ import { Box, CircularProgress } from "@mui/material";
 import styled from "@emotion/styled";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
-import { authSchema } from "@/services/authentications/schema";
-import { AuthValues } from "@/services/authentications/auth.type";
-import { supabase } from "@/utils/supabaseClient";
 import { FormInputGroup, Button } from "movies-ui-components";
+import { AuthValues } from "../../services/authentications/auth.type";
+import { authSchema } from "../../services/authentications/schema";
+import { supabase } from "../../utils/supabaseClient";
 
 const Wrapper = styled(Box)`
   display: grid;

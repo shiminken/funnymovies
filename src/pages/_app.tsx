@@ -1,7 +1,7 @@
 import "../../styles/globals.css";
 import type { AppProps } from "next/app";
-import { MyUserContextProvider } from "@/hooks/useUser";
-import { supabase } from "@/utils/supabaseClient";
+import { supabase } from "../utils/supabaseClient";
+import { MyUserContextProvider } from "../hooks/useUser";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

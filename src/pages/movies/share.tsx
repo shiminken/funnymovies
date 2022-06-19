@@ -1,4 +1,3 @@
-import MainTemplate from "@/components/MainTemplate";
 import {
   CircularProgress,
   Dialog,
@@ -10,11 +9,7 @@ import React, { useCallback, useState } from "react";
 import { Text, Button, FormInputGroup } from "movies-ui-components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { youtubeSchema } from "@/services/movieshare/schema";
 import { useRouter } from "next/router";
-import { getYoutubeId } from "@/utils/helpers";
-import { updateMovieInfors } from "@/services/movieshare";
-import { useUser } from "@/hooks/useUser";
 import {
   ButtonStyled,
   ShareBoxWrapper,
@@ -22,6 +17,11 @@ import {
   UrlWrapper,
   styles,
 } from "../../../styles/movies.styled";
+import { useUser } from "../../hooks/useUser";
+import { youtubeSchema } from "../../services/movieshare/schema";
+import { getYoutubeId } from "../../utils/helpers";
+import { updateMovieInfors } from "../../services/movieshare";
+import MainTemplate from "../../components/MainTemplate";
 
 export type YoutubeLinkValue = {
   youtubeUrl: string;
