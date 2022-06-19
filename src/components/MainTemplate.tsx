@@ -2,11 +2,10 @@ import React, { useCallback } from "react";
 import { Footer, Header } from "movies-ui-components";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
-import { useUser } from "@/hooks/useUser";
 import { LoginSectionHeader, SignInForm } from "./molecules";
 import { useRouter } from "next/router";
 import { Button } from "movies-ui-components";
-
+import { useUser } from "../hooks/useUser";
 interface MainTemplateProps {
   children: JSX.Element;
   isHideRightSide?: boolean;

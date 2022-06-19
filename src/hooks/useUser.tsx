@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createContext, useContext } from "react";
 import { User } from "@supabase/supabase-auth-helpers/react";
-import { supabase } from "@/utils/supabaseClient";
 import { SupabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
+import { supabase } from "../utils/supabaseClient";
 
 type UserContextType = {
   accessToken: string | null;
@@ -9,8 +9,9 @@ type UserContextType = {
   isLoading: boolean;
 };
 
-export const UserContext =
-  createContext<UserContextType | undefined>(undefined);
+export const UserContext = createContext<UserContextType | undefined>(
+  undefined
+);
 
 export interface Props {
   supabaseClient: SupabaseClient;

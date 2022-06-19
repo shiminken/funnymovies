@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import colors from "@/constants/colors";
 import { Box } from "@mui/material";
 
 import { Button } from "movies-ui-components";
+import colors from "../src/constants/colors";
 
 export const MovieListWrapper = styled.div`
   display: flex;

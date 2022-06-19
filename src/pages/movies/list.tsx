@@ -1,10 +1,10 @@
-import { MovieInformation } from "@/services/authentications/auth.type";
-import { getYoutubeUrl } from "@/utils/supabaseClient";
 import { CircularProgress } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 
 import { MovieCard } from "movies-ui-components";
 import { MovieListWrapper, styles } from "../../../styles/movies.styled";
+import { MovieInformation } from "../../services/movieshare/movies.type";
+import { getMovieList } from "../../services/movieshare";
 
 const MovieList = () => {
   const [moviesData, setMoviesData] = useState<MovieInformation[]>([]);
@@ -13,7 +13,7 @@ const MovieList = () => {
   const getAllYoutubeUrl = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await getYoutubeUrl();
+      const data = (await getMovieList()) as MovieInformation[];
       if (data?.length) {
         setMoviesData(data.reverse());
       }
@@ -31,16 +31,26 @@ const MovieList = () => {
   const renderMoviesList = useCallback(() => {
     if (moviesData.length) {
       return moviesData.map((item: MovieInformation, key: number) => {
+        const {
+          videoId,
+          title,
+          sharedName,
+          voteUpCount,
+          voteDownCount,
+          description,
+        } = item;
+
         return (
           <MovieCard
             key={key}
-            videoId={item.videoId}
-            title={item.title}
-            sharedName={item.sharedName}
-            voteUpCount={item.voteUpCount}
-            voteDownCount={item.voteDownCount}
-            description={item.description}
+            videoId={videoId}
+            title={title}
+            sharedName={sharedName}
+            voteUpCount={voteUpCount}
+            voteDownCount={voteDownCount}
+            description={description}
             style={styles.movieCard}
+            data-testid={`movielists-item-${key}`}
           />
         );
       });
