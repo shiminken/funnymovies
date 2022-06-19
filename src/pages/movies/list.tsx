@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import { MovieCard } from "movies-ui-components";
 import { MovieListWrapper, styles } from "../../../styles/movies.styled";
-import { getYoutubeUrl } from "../../utils/supabaseClient";
 import { MovieInformation } from "../../services/movieshare/movies.type";
+import { getMovieList } from "../../services/movieshare";
 
 const MovieList = () => {
   const [moviesData, setMoviesData] = useState<MovieInformation[]>([]);
@@ -13,7 +13,7 @@ const MovieList = () => {
   const getAllYoutubeUrl = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await getYoutubeUrl();
+      const data = (await getMovieList()) as MovieInformation[];
       if (data?.length) {
         setMoviesData(data.reverse());
       }
@@ -50,6 +50,7 @@ const MovieList = () => {
             voteDownCount={voteDownCount}
             description={description}
             style={styles.movieCard}
+            data-testid={`movielists-item-${key}`}
           />
         );
       });

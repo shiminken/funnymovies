@@ -31,7 +31,7 @@ const LoginSectionHeader = () => {
   }, [reload]);
 
   return (
-    <Wrapper>
+    <Wrapper data-testid={"logedin-section-header"}>
       {userDetails && (
         <>
           <Text>Welcome: {userDetails?.email}</Text>
