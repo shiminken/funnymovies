@@ -1,5 +1,4 @@
 import axios from "axios";
-import { insertYoutubeUrl } from "../../utils/supabaseClient";
 import { MovieInformation } from "./movies.type";
 
 const youtubeAPIKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
