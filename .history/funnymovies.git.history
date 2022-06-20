@@ -1,0 +1,34 @@
+ebb5383 (HEAD -> master, origin/master) Merge pull request #13 from shiminken/feature/write-readme
+dd2d3bd (origin/feature/write-readme, feature/write-readme) done write read me
+6c6a504 done write read me
+9566572 Merge pull request #12 from shiminken/feature/writing-unit-tests
+2933615 (origin/feature/writing-unit-tests, feature/writing-unit-tests) write unit test and integration test for signup flow
+dbd03e7 Merge pull request #11 from shiminken/feature/writing-unit-tests
+ed07d6c remove insertYoutubeUrl
+6e4b3f2 Adding unnit test and integration test for movies, template and signin
+0a09403 Config jest and test for project. write first test success
+1ea5f03 Merge pull request #10 from shiminken/feature/refactor-structure-for-build
+ef40b4d (origin/feature/refactor-structure-for-build, feature/refactor-structure-for-build) Fix eslint
+62a999d config routing for production
+90405ac Merge pull request #9 from shiminken/feature/refactor-structure-for-build
+a3834d4 Restructure refactoring for build
+c296389 Merge pull request #8 from shiminken/feature/refactor-structure-for-build
+5d79396 Restructure refactoring for build
+586b93c hotfix env
+02ed712 Merge pull request #7 from shiminken/build/build-to-vercel
+bc0ce48 (origin/build/build-to-vercel, build/build-to-vercel) config build
+1e4873f refactor code structure for build
+7822ca6 refactor code structure for build
+cf16050 Merge pull request #6 from shiminken/build/build-to-vercel
+2693feb refactor eslint
+6fdfab8 (feature/write-unit-test) Merge pull request #5 from shiminken/feature/write-movies-api-and-integrate-to-frondend
+f06b5de (origin/feature/write-movies-api-and-integrate-to-frondend, feature/write-movies-api-and-integrate-to-frondend) done write movies api and integrate to frontend
+de34077 Merge pull request #4 from shiminken/feature/write-authen-api-and-integrate-to-frondend
+23a2640 (origin/feature/write-authen-api-and-integrate-to-frondend, feature/write-authen-api-and-integrate-to-frondend) Done write authen api using superbase and integrate authen flow to FE
+d2a7e34 Merge pull request #3 from shiminken/feature/setup-movies-app-base-and-integrate-ui-library
+171b32a (origin/feature/setup-movies-app-base-and-integrate-ui-library, feature/setup-movies-app-base-and-integrate-ui-library) done setup movies app base, routing and integrate ui library
+8074099 Merge pull request #2 from shiminken/feature/build-common-ui
+e907cf1 (origin/feature/build-common-ui, feature/build-common-ui) done base common ui
+9b7db66 Merge pull request #1 from shiminken/feature/init-project
+80587e3 (origin/feature/init-project, feature/init-project) re init movie app nextjs
+4a4675e init mono project with nextjs and ui-library. Config to run and build ui-libary, export for nextjs use successfully
