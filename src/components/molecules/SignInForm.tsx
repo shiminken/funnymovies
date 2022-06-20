@@ -52,7 +52,6 @@ const SignInForm = () => {
           email: data.email,
           password: data.password,
         });
-        console.log("RESPONSE", response);
 
         if (response?.error?.message) {
           alert(response?.error?.message);
