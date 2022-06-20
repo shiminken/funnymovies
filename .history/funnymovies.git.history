@@ -1,4 +1,6 @@
-ebb5383 (HEAD -> master, origin/master) Merge pull request #13 from shiminken/feature/write-readme
+a990c4a (HEAD -> master, origin/master) Update Readme
+9858480 Update Readme
+ebb5383 Merge pull request #13 from shiminken/feature/write-readme
 dd2d3bd (origin/feature/write-readme, feature/write-readme) done write read me
 6c6a504 done write read me
 9566572 Merge pull request #12 from shiminken/feature/writing-unit-tests
