@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, CircularProgress } from "@mui/material";
+import { Alert, Box, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { FormInputGroup, Button } from "movies-ui-components";
 import { useForm } from "react-hook-form";
@@ -37,6 +37,10 @@ const SignUp = () => {
   const [validate, setValidate] = useState<any>({});
   const [isLoading, setLoading] = useState(false);
   const [newUser, setNewUser] = useState<User | null>(null);
+  const [status, setStatus] = useState({
+    err: false,
+    mess: "",
+  });
   const { userDetails } = useUser();
 
   const { replace } = useRouter();
@@ -69,8 +73,15 @@ const SignUp = () => {
       });
 
       if (error) {
-        alert(error?.message);
+        setStatus({
+          err: true,
+          mess: error?.message,
+        });
       } else {
+        setStatus({
+          err: false,
+          mess: "Create member success",
+        });
         setNewUser(createdUser);
       }
     } catch (error) {
@@ -89,7 +100,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (newUser || userDetails) {
-      void replace("/");
+      setTimeout(() => {
+        void replace("/");
+      }, 500);
     }
   }, [newUser, userDetails, replace]);
 
@@ -120,6 +133,11 @@ const SignUp = () => {
           placeholder="password"
           style={styles.formInput}
         />
+        {!!status.mess?.length && (
+          <Alert severity={status.err ? "error" : "success"}>
+            {status.mess}
+          </Alert>
+        )}
 
         {isLoading && (
           <CircularProgress size={20} style={styles.loadingIndicator} />
